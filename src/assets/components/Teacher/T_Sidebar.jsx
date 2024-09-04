@@ -40,6 +40,7 @@ const svgVariants = {
 
 function T_Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const containerControls = useAnimationControls();
   const svgControls = useAnimationControls();
@@ -48,21 +49,34 @@ function T_Sidebar() {
     if (isOpen) {
       containerControls.start("open");
       svgControls.start("open");
+
+      const timer = setTimeout(() => {
+        if (!isMouseOver) {
+          setIsOpen(false);
+        }
+      }, 1500);
+
+      return () => clearTimeout(timer);
     } else {
       containerControls.start("close");
       svgControls.start("close");
     }
-  }, [isOpen]);
+  }, [isOpen, isMouseOver]);
 
   const handleOpenClose = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleMouseOverOff = () => {
+    setIsMouseOver(!isMouseOver);
+  };
   return (
     <motion.section
       variants={containerVariants}
       animate={containerControls}
       initial="close"
+      onMouseEnter={handleMouseOverOff} // Pause closing when hovered
+      onMouseLeave={handleMouseOverOff} // Allow closing when not hovered
       className="dark:bg-neutral-900 flex flex-col z-10 gap-20 p-5 absolute top-0 left-0 h-full shadow shadow-neutral-600"
     >
       <div className="flex flex-row w-full justify-between place-items-center">

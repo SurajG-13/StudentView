@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 function GetStarted() {
@@ -26,7 +27,7 @@ function GetStarted() {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex h-screen">
         <div className="my-16 mb-12 p-0 list-none w-[60%]">
           <div className="mr-50 mt-20 ml-12">
             <p className="text-6xl font-black text-[#050C1B] leading-[1.2] mb-4">
@@ -39,31 +40,43 @@ function GetStarted() {
           <div className="font-sans text-[#39424E] text-[16px] leading-[1.4] ml-8">
             <ul>
               <li>
-                <button
+                <motion.button
+                  whileTap={{ scale: 1.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    backgroundColor: "#16423C",
+                  }}
+                  transition={{ bounceDumping: 10, bounceStiffness: 600 }}
                   ref={signInBoxClickedRef}
                   onClick={() => handleButtonClick("Teacher")}
                   className="inline-flex w-[40%] text-left max-w-[466px] 
                   bg-green-600 text-white 
                   mb-6 mt-6 rounded-lg border p-6 pl-24 
-                  transition duration-300 relative"
+                  relative"
                 >
                   I am a Teacher
                   <ArrowUpRightIcon className="w-[1.5rem] ml-[1rem]" />
-                </button>
+                </motion.button>
               </li>
 
               <li>
-                <button
+                <motion.button
+                  whileTap={{ scale: 1.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    backgroundColor: "#16423C",
+                  }}
+                  transition={{ bounceDumping: 10, bounceStiffness: 600 }}
                   ref={signInBoxClickedRef}
                   onClick={() => handleButtonClick("Student")}
                   className="inline-flex w-[40%] text-left max-w-[466px] 
                   bg-green-600 text-white 
                   mb-6 mt-6 rounded-lg border p-6 pl-24 
-                  transition duration-300 relative"
+                 relative"
                 >
                   I am a Student
                   <ArrowUpRightIcon className="w-[1.5rem] ml-[1rem]" />
-                </button>
+                </motion.button>
               </li>
             </ul>
           </div>

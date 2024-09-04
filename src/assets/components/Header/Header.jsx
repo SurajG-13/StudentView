@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+// import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 export default function Header() {
-  // DropDown Menu Logic
+  // .................. DropDown Menu Logic ..................
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -23,7 +25,8 @@ export default function Header() {
     };
   }, []);
 
-  // Theme Mode Logic
+  // .................. Theme Mode Logic ..................
+
   const [themeMode, setThemeMode] = useState("light");
   const darkTheme = () => {
     setThemeMode("dark");
@@ -47,8 +50,31 @@ export default function Header() {
     }
   };
 
+  // .................. To Hide Navigation Bar on Scrolling ..................
+
+  // const [isHidden, setIsHidden] = useState(false);
+  // const { scrollY } = useScroll();
+  // const lastYRef = useRef(0);
+
+  // useMotionValueEvent(scrollY, "change", (y) => {
+  //   const difference = y - lastYRef.current;
+  //   if (Math.abs(difference) > 50) {
+  //     setIsHidden(difference > 0);
+  //     lastYRef.current = y;
+  //   }
+  // });
+
   return (
     <>
+      {/* <motion.header
+        animate={isHidden ? "hidden" : "visible"}
+        variants={{
+          hidden: {
+            y: "-100%",
+          },
+          visible: { y: "0%" },
+        }}
+        transition={{ duration: 0.2 }} */}
       <header className="shadow sticky z-50 top-0">
         <nav className="bg-white border-gray-200 dark:text-white dark:bg-neutral-900  px-4 lg:px-6 py-2.5">
           <div
@@ -57,9 +83,12 @@ export default function Header() {
           >
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <h1 className="text-3xl">Student View</h1>
+              <h1 className="text-3xl">Website Logo</h1>
             </Link>
 
+            {/* 
+                            Log-in Box
+            */}
             <div
               className="flex items-center 
                           lg:order-2"
@@ -69,7 +98,7 @@ export default function Header() {
                 className="text-gray-800 hover:text-orange-700 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
                          font-medium rounded-lg text-sm 
                          px-4 lg:px-5 py-2 lg:py-2.5 mr-2 
-                         focus:outline-none"
+                         focus:outline-none dark:text-white"
               >
                 Log in
               </Link>
@@ -93,7 +122,7 @@ export default function Header() {
             >
               <ul
                 className="flex flex-col mt-4 font-medium 
-                           lg:flex lg:flex-row lg:space-x-8 lg:mt-0"
+                           lg:flex lg:flex-row lg:space-x-8 lg:mt-0 "
               >
                 <li>
                   <NavLink
@@ -102,7 +131,7 @@ export default function Header() {
                       `block py-2 pr-4 pl-3 duration-200
            ${isActive ? "text-orange-500" : "text-gray-700"}
            border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0
-           hover:text-orange-700 lg:p-0`
+           hover:text-orange-700 lg:p-0 dark:text-white`
                     }
                   >
                     Home
@@ -115,7 +144,7 @@ export default function Header() {
                       `block py-2 pr-4 pl-3 duration-200
            ${isActive ? "text-orange-500" : "text-gray-700"}
            border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0
-           hover:text-orange-700 lg:p-0`
+           hover:text-orange-700 lg:p-0 dark:text-white`
                     }
                   >
                     About
@@ -128,7 +157,7 @@ export default function Header() {
                 >
                   <span
                     className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100
-                  hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0 cursor-pointer"
+                  hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 dark:text-white lg:p-0 cursor-pointer"
                   >
                     Resources
                   </span>

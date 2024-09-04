@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         spaceGrotesk: ["Space Grotesk", "sans-serif"],
+        cedarvilleCursive: ["Cedarville Cursive", "sans-serif"],
       },
     },
   },
